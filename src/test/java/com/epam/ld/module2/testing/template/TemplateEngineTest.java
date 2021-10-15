@@ -33,4 +33,9 @@ public class TemplateEngineTest {
         //then
         Assertions.fail(result);
     }
+
+    @Test
+    public void generateMessageRedundantValues() {
+
+    }
 }
