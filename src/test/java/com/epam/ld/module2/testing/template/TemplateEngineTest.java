@@ -20,4 +20,17 @@ public class TemplateEngineTest {
         //then
         Assertions.assertEquals(result, expectedResult);
     }
+
+    @Test
+    public void generateMessageErrorTest() {
+        Template template = new Template();
+        Client client = new Client();
+        String expectedResult = "from: test@mail.ru, to: petrov@mail.ru body: hello my friend";
+
+        //when
+        String result = templateEngine.generateMessage(template, client);
+
+        //then
+        Assertions.fail(result);
+    }
 }
