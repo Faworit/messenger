@@ -18,7 +18,7 @@ public class TemplateEngineTest {
         String result = templateEngine.generateMessage(template, client);
 
         //then
-        Assertions.assertEquals(result, expectedResult);
+        Assertions.assertEquals(expectedResult, result);
     }
 
     @Test
@@ -37,5 +37,18 @@ public class TemplateEngineTest {
     @Test
     public void generateMessageRedundantValues() {
 
+    }
+
+    @Test
+    public void supportMessageWithTag() {
+        Template template = new Template();
+        Client client = new Client();
+        String expectedResult = "Hello John. Test text #{tag}. Best regard from Tom";
+
+        //when
+        String result = templateEngine.generateMessage(template, client);
+
+        //then
+        Assertions.assertEquals(expectedResult, result);
     }
 }
