@@ -13,10 +13,10 @@ public class TemplateEngineTest {
         Template template = new Template();
         Client client = new Client();
         client.setAddresses("test@mail.ru");
-        client.setMailText("Test text #{tag}");
+        client.setMailText("Test text");
         client.setReceiverName("John");
         client.setSenderName("Tom");
-        String expectedResult = "Hello John. Test text #{tag}. Best regard from Tom";
+        String expectedResult = "Hello John. Test text. Best regard from Tom";
 
         //when
         String result = templateEngine.generateMessage(template, client);

@@ -1,0 +1,2 @@
+message was sent to address: "est@mail.ru
+text of message: Hello Jack. I want to tell you interesting story. Best regard from Tom
