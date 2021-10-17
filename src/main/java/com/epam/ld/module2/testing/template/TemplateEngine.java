@@ -14,6 +14,11 @@ public class TemplateEngine {
      * @return the string
      */
     public String generateMessage(Template template, Client client) {
-        return "Hello John. Test text #{tag}. Best regard from Tom";
+        String generatedMessage = String.format(template.getMailTemplate(),
+                                                client.getReceiverName(),
+                                                client.getMailText(),
+                                                client.getSenderName());
+        System.out.println("Test: " + generatedMessage);
+        return generatedMessage;
     }
 }
