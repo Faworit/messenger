@@ -5,14 +5,18 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TemplateEngineTest {
-    TemplateEngine templateEngine;
+    TemplateEngine templateEngine = new TemplateEngine();
 
     @Test
     public void generateMessageTest() {
         //given
         Template template = new Template();
         Client client = new Client();
-        String expectedResult = "from: test@mail.ru, to: petrov@mail.ru body: hello my friend";
+        client.setAddresses("test@mail.ru");
+        client.setMailText("Test text #{tag}");
+        client.setReceiverName("John");
+        client.setSenderName("Tom");
+        String expectedResult = "Hello John. Test text #{tag}. Best regard from Tom";
 
         //when
         String result = templateEngine.generateMessage(template, client);
@@ -25,7 +29,7 @@ public class TemplateEngineTest {
     public void generateMessageErrorTest() {
         Template template = new Template();
         Client client = new Client();
-        String expectedResult = "from: test@mail.ru, to: petrov@mail.ru body: hello my friend";
+        String expectedResult = "Hello John. Test text #{tag}. Best regard from Tom";
 
         //when
         String result = templateEngine.generateMessage(template, client);
