@@ -29,13 +29,15 @@ public class TemplateEngineTest {
     public void generateMessageErrorTest() {
         Template template = new Template();
         Client client = new Client();
+        client.setAddresses("test@mail.ru");
+        client.setMailText("Test text #{tag}");
+        client.setReceiverName("John");
         String expectedResult = "Hello John. Test text #{tag}. Best regard from Tom";
 
-        //when
-        String result = templateEngine.generateMessage(template, client);
-
         //then
-        Assertions.fail(result);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            templateEngine.generateMessage(template, client);
+        });
     }
 
     @Test
