@@ -1,14 +1,16 @@
 package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
+import com.epam.ld.module2.testing.IncomingData;
+import com.epam.ld.module2.testing.IncomingDataMock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TemplateEngineTest {
+class TemplateEngineTest {
     TemplateEngine templateEngine = new TemplateEngine();
 
     @Test
-    public void generateMessageTest() {
+    void generateMessageTest() {
         //given
         Template template = new Template();
         Client client = new Client();
@@ -26,7 +28,7 @@ public class TemplateEngineTest {
     }
 
     @Test
-    public void generateMessageErrorTest() {
+    void generateMessageErrorTest() {
         Template template = new Template();
         Client client = new Client();
         client.setAddresses("test@mail.ru");
@@ -41,14 +43,18 @@ public class TemplateEngineTest {
     }
 
     @Test
-    public void generateMessageRedundantValues() {
+    void generateMessageRedundantValues() {
 
     }
 
     @Test
-    public void supportMessageWithTag() {
+    void supportMessageWithTag() {
         Template template = new Template();
         Client client = new Client();
+        client.setAddresses("test@mail.ru");
+        client.setMailText("Test text #{tag}");
+        client.setReceiverName("John");
+        client.setSenderName("Tom");
         String expectedResult = "Hello John. Test text #{tag}. Best regard from Tom";
 
         //when
@@ -56,5 +62,14 @@ public class TemplateEngineTest {
 
         //then
         Assertions.assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void workWithConsole() {
+        IncomingData client = new IncomingDataMock();
+        Assertions.assertEquals("JohnMock", client.workWithConsole().getSenderName());
+        Assertions.assertEquals("TomMock", client.workWithConsole().getReceiverName());
+        Assertions.assertEquals("mock", client.workWithConsole().getAddresses());
+        Assertions.assertEquals("mock@gmail.com", client.workWithConsole().getMailText());
     }
 }
