@@ -1,0 +1,4 @@
+address : est@mail.ru
+receiverName : Jack
+mailText : I want to tell you interesting story
+senderName : Tom

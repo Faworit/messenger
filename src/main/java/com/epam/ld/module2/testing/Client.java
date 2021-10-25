@@ -5,6 +5,9 @@ package com.epam.ld.module2.testing;
  */
 public class Client {
     private String addresses;
+    private String receiverName;
+    private String mailText;
+    private String senderName;
 
     /**
      * Gets addresses.
@@ -22,5 +25,29 @@ public class Client {
      */
     public void setAddresses(String addresses) {
         this.addresses = addresses;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public String getMailText() {
+        return mailText;
+    }
+
+    public void setMailText(String mailText) {
+        this.mailText = mailText;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 }
